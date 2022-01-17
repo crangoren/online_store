@@ -23,7 +23,11 @@
 
         <property name="hibernate.hbm2ddl.auto">create-drop</property>
 
-        <mapping class="online_store.lesson2.entities.Product" />
+        <mapping class="online_store.lesson2.entities.Order"/>
+        <mapping class="online_store.lesson2.entities.OrderItem"/>
+        <mapping class="online_store.lesson2.entities.Product"/>
+        <mapping class="online_store.lesson2.entities.Role"/>
+        <mapping class="online_store.lesson2.entities.User"/>
 
     </session-factory>
 </hibernate-configuration>
