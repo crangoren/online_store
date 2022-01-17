@@ -1,0 +1,86 @@
+<!doctype html>
+
+<html ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+
+    <div class="container" ng-controller="indexController">
+
+<!--        <h5 align="right">Отфильтровать по стоимости</h5>-->
+<!--        <div align="right">-->
+<!--            <form novalidate ng-submit="filterByPriceBetween()">-->
+<!--                <div class="form" >-->
+<!--                    <label for="minPrice">Минимальная цена</label><br>-->
+<!--                    <input type="number" class="form" id="minPrice" placeholder="min" ng-model="filter.min">-->
+<!--                </div>-->
+<!--                <br>-->
+<!--                <div class="form">-->
+<!--                    <label for="maxPrice">Максимальная цена</label><br>-->
+<!--                    <input type="number" class="form" id="maxPrice" placeholder="max" ng-model="filter.max">-->
+<!--                </div>-->
+<!--                <br>-->
+<!--                <button type="submit" class="btn btn-info">Показать</button>-->
+<!--            </form>-->
+<!--        </div>-->
+
+    <form novalidate ng-submit="loadProducts()">
+        <div class="form-floating input-group-sm">
+            <input type="text" class="form-control" id="filterTitle" ng-model="filter.title_part">
+            <label for="filterTitle">Название продукта</label>
+        </div>
+        <p></p>
+        <div class="form-floating input-group-sm">
+            <input type="number" class="form-control" id="filterMinPrice" ng-model="filter.min_price">
+            <label for="filterMinPrice">Мин. цена</label>
+        </div>
+        <p></p>
+        <div class="form-floating input-group-sm">
+            <input type="number" class="form-control" id="filterMaxPrice" ng-model="filter.max_price">
+            <label for="filterMaxPrice">Макс. цена</label>
+        </div>
+        <p></p>
+        <button type="submit" class="btn btn-info">Показать</button>
+    </form>
+
+        <h3>Список продуктов</h3>
+
+        <table class="table table-hover" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>ID</td>
+                <td>Название продукта</td>
+                <td>Цена</td>
+            </tr>
+            <tbody>
+            <tr ng-repeat="p in ProductsPage.content">
+                <td>{{p.id}}</td>
+                <td>{{p.title}}</td>
+                <td>{{p.price}}</td>
+                <td>
+                    <button class="btn btn-danger" ng-click="addToCart(p.id)">Добавить в корзину</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <table>
+            <h5>Корзина</h5>
+            <tr ng-repeat="p in CartList.content">
+                <td>{{p.id}}</td>
+                <td>{{p.title}}</td>
+                <td>{{p.price}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
