@@ -22,7 +22,7 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final ProductConverter productConverter;
-    private final CartService cartService;
+//    private final CartService cartService;
 
     public Page<Product> findAll(Integer page, Integer minPrice, Integer maxPrice, String titlePart) {
         Specification<Product> spec = Specification.where(null);
@@ -70,16 +70,16 @@ public class ProductService {
         return productConverter.dtoToEntity(productDto);
     }
 
-    @Transactional
-    public List<Product> addToCart(Product product) {
-        productRepository.findById(product.getId()).orElseThrow(() -> new ResourceNotFoundException("Unable to add product in cart. Not found in base id: " + product.getId()));
-        cartService.addToCart(product);
-        return cartService.getCart();
-    }
-
-    public List<Product> showCart() {
-        return cartService.getCart();
-    }
+//    @Transactional
+//    public List<Product> addToCart(Product product) {
+//        productRepository.findById(product.getId()).orElseThrow(() -> new ResourceNotFoundException("Unable to add product in cart. Not found in base id: " + product.getId()));
+//        cartService.addToCart(product);
+//        return cartService.getCart();
+//    }
+//
+//    public List<Product> showCart() {
+//        return cartService.getCart();
+//    }
 
 
 }
