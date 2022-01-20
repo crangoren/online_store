@@ -31,17 +31,6 @@ public class ProductController {
                 p -> productConverter.entityToDto(p));
     }
 
-//    @GetMapping("/{id}")
-//    public ProductDto findById(@PathVariable Long id){
-//        Product product = productService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product not found " + id));
-//        return productConverter.entityToDto(product);
-//    }
-
-//    @PutMapping("/{id}")
-//    public void changePrice(@RequestParam Long productId, @RequestParam Integer delta){
-//        productService.changePrice(productId, delta);
-//    }
-
 
     @PostMapping
     public ProductDto saveNewProduct(@RequestBody ProductDto productDto){
